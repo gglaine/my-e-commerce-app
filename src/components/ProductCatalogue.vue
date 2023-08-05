@@ -1,25 +1,24 @@
 <template>
-  <div class="w-full">
-    <div class="p-4 flex justify-between">
-      <input v-model="searchTerm" :placeholder="$t('searchProducts')" class="p-2 rounded border" />
-      <select v-model="selectedCategory" class="p-2 rounded border">
+  <div class="max-w-screen-xl mx-auto mt-32">
+    <div class="p-4 flex justify-end">
+      <input v-model="searchTerm" :placeholder="$t('searchProducts')" class="w-full p-2 mr-2 rounded border" />
+      <select v-model="selectedCategory" class="p-2 mr-0 rounded border">
         <option value="">{{$t('allCategories')}}</option>
         <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.label }}</option>
       </select>
     </div>
-    <h1 class="text-2xl mr-2 text-right font-medium mb-2 p-2">{{$t('productCatalogue')}}</h1>
     <div class="bg-gray-100 p-4 flex flex-col md:flex-row-reverse">
-      <div class="flex flex-col p-4 m-4 border rounded shadow-lg bg-white w-full md:w-40 flex-none mb-4 md:mb-0">
-        <div v-if="showFlashNotification" class="fixed top-4 right-4 bg-green-500 text-white p-4 rounded transition duration-300 ease-in-out">
+      <div class="flex flex-col p-1 m-4 border rounded shadow-lg bg-white w-full md:w-40 flex-none mb-4 md:mb-0">
+        <div v-if="showFlashNotification" class="fixed notification top-4 right-4 bg-green-500 text-white p-4 rounded transition duration-300 ease-in-out" :class="{ 'animate-notification': showFlashNotification }">
           {{$t('onTheMove')}}
         </div>
         <button @click="proceedToCheckout" class="bg-green-500 text-white p-2 rounded mb-4">{{$t('proceedToCheckout')}}</button>
         <!-- You can add more content to the sidebar if needed -->
-        <h3>{{ cartLength }} {{$t('itemsInYourCart')}}</h3>
-        <div v-for="product in cart" :key="product.id" class="mb-2">
-          <span>{{ product.label }}:</span>
-          <span>{{ product.price / 100 }} €</span>
-        </div>
+        <h3 class="mb-2"> {{$t('itemsInYourCart')}}</h3>
+        <div v-for="product in cart" :key="product.id" class="mb-2 flex justify-between text-sm">
+  <span>{{ product.label }}:</span>
+  <!-- <span>{{ product.price / 100 }} €</span> -->
+</div>
       </div>
       <div class="flex flex-col space-y-2">
         <div v-for="product in filteredProducts" :key="product.id" class="border rounded shadow-lg bg-white w-full flex flex-row">
@@ -117,3 +116,20 @@ export default defineComponent({
 });
 </script>
 
+<style>
+.notification {
+  position: fixed;
+  top: 4rem;
+  right: 4rem;
+  background-color: #48bb78; /* bg-green-500 */
+  color: white;
+  padding: 1rem;
+  border-radius: 0.25rem; /* rounded */
+  transition: transform 1s ease-in-out; /* 1s duration */
+  transform: translateX(0); /* initial position */
+}
+
+.animate-notification {
+  transform: translateX(-300px); /* target position */
+}
+</style>

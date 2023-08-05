@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+#app {
+    background: url("/background.jpg") no-repeat;
+    background-repeat: "no-repeat";
+}

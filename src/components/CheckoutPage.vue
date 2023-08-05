@@ -1,7 +1,6 @@
 <template>
-  <div class="bg-gray-100 p-4 flex">
+  <div class="bg-gray-100 top-24 p-4 flex mt-32 max-w-screen-xl mx-auto">
     <div class="flex-1">
-      <h1 class="text-2xl font-bold mb-4">Checkout Page</h1>
       <div v-for="product in cart" :key="product.id" class="relative p-4 m-4 border rounded shadow-lg bg-white w-96 h-44">
         <h2 class="text-xl mb-2">{{ product.label }}</h2>
         <p class="mb-2">{{ product.description }}</p>
@@ -15,7 +14,7 @@
       <div v-for="product in cart" :key="product.id" class="mb-2">
         <span>{{ product.label }}:</span>
         <span>{{ product.price / 100 }} €</span>
-        <button @click="removeFromCart(product)" class="bg-red-500 text-white p-2 rounded">Remove</button>
+        <button @click="removeFromCart(product)" class="bg-red-500 text-white text-xs p-2 rounded"><font-awesome-icon icon="fa-solid fa-trash" /></button>
       </div>
       <div class="font-bold text-lg">
         Total: {{ total }} €
@@ -28,10 +27,12 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useCart } from './composables/useCart';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   setup() {
     const { cart, removeFromCart } = useCart();
+    const { t } = useI18n();
     
     const total = computed(() => {
       return cart.value.reduce((sum, product) => sum + product.price / 100, 0);
@@ -40,7 +41,8 @@ export default defineComponent({
     return {
       cart,
       total,
-      removeFromCart
+      removeFromCart,
+      t
     };
   },
 });
