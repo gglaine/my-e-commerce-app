@@ -3,20 +3,22 @@ export const messages = {
     en: {
       searchProducts: "Search products...",
       allCategories: "All Categories",
-      productCatalogue: "Product Catalogue",
-      onTheMove: "On the move!",
+      productCatalogue: "Catalogue",
+      onTheMove: "Let's go!",
       proceedToCheckout: "Proceed to Checkout",
       itemsInYourCart: "Items in your cart",
       addToCart: "Add to Cart",
+      yourCart: "Your cart"
     },
     fr: {
       searchProducts: "Rechercher des produits...",
       allCategories: "Toutes les catégories",
-      productCatalogue: "Catalogue de produits",
-      onTheMove: "C'est parti mon kiki!",
+      productCatalogue: "Catalogue",
+      onTheMove: "C'est parti!",
       proceedToCheckout: "Passer à la caisse",
       itemsInYourCart: "Votre panier",
       addToCart: "Ajouter au panier",
+      yourCart: "Votre panier"
     },
   };
   

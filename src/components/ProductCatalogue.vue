@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-xl mx-auto mt-32">
+  <div class="max-w-screen-xl mx-auto mt-24">
     <div class="p-4 flex justify-end">
       <input v-model="searchTerm" :placeholder="$t('searchProducts')" class="w-full p-2 mr-2 rounded border" />
       <select v-model="selectedCategory" class="p-2 mr-0 rounded border">
@@ -8,38 +8,42 @@
       </select>
     </div>
     <div class="bg-gray-100 p-4 flex flex-col md:flex-row-reverse">
-      <div class="flex flex-col p-1 m-4 border rounded shadow-lg bg-white w-full md:w-40 flex-none mb-4 md:mb-0">
+      <div class="flex flex-col p-2 m-4 border rounded shadow-lg bg-white w-full md:w-40 flex-none mb-4 md:mb-0">
         <div v-if="showFlashNotification" class="fixed notification top-4 right-4 bg-green-500 text-white p-4 rounded transition duration-300 ease-in-out" :class="{ 'animate-notification': showFlashNotification }">
           {{$t('onTheMove')}}
         </div>
         <button @click="proceedToCheckout" class="bg-green-500 text-white p-2 rounded mb-4">{{$t('proceedToCheckout')}}</button>
-        <!-- You can add more content to the sidebar if needed -->
         <h3 class="mb-2"> {{$t('itemsInYourCart')}}</h3>
         <div v-for="product in cart" :key="product.id" class="mb-2 flex justify-between text-sm">
-  <span>{{ product.label }}:</span>
-  <!-- <span>{{ product.price / 100 }} €</span> -->
-</div>
+          <span>{{ product.label }}:</span>
+        </div>
       </div>
-      <div class="flex flex-col space-y-2">
-        <div v-for="product in filteredProducts" :key="product.id" class="border rounded shadow-lg bg-white w-full flex flex-row">
-          <div :style="{ backgroundImage: `url(${product.thumbnail_url})`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '16 / 9' }" class="w-1/2"></div>
-          <div class="p-4 w-1/2 flex flex-col justify-between">
-            <div>
-              <h2 class="text-xl mb-2">{{ product.label }}</h2>
-              <p class="mb-2">{{ product.description }}</p>
-              <p class="mb-2">{{ product.price / 100 }} €</p>
+      <div class="flex flex-col space-y-2 justify-end items-end">
+        <div v-for="product in filteredProducts" :key="product.id" class="border rounded shadow-lg bg-white w-full md:w-1/2 flex flex-row p-2 m-2 relative text-sm">
+          <div :style="{ backgroundImage: `url(${product.thumbnail_url})`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '16/9' }" class="w-32 h-16 mr-2 bg-cover bg-center"></div>
+          <div class="p-2 flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h2 class="text-lg mb-2">{{ product.label }}</h2>
+                <p class="mb-2">{{ product.description }}</p>
+              </div>
             </div>
-            <div class="text-right mt-2">
-              <button @click="addToCart(product)" class="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded transition duration-300 ease-in-out">
-                <font-awesome-icon icon="fa-solid fa-cart-arrow-down" class="mr-2" />{{$t('addToCart')}}
-              </button>
-            </div>
+          </div>
+          <p class="mb-3 text-sm absolute top-2 right-2">{{ product.price / 100 }} €</p>
+          <div class="absolute mt-2 bottom-2 right-2">
+            <button @click="addToCart(product)" class="bg-blue-500 hover:bg-blue-700 text-white p-2 mt-2 rounded transition duration-300 ease-in-out text-sm">
+              <font-awesome-icon icon="fa-solid fa-cart-arrow-down" class="mr-2" />
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+
+
+
 
 <script lang="ts">
 import axios from 'axios';
@@ -51,6 +55,9 @@ import { Product, Category } from './types';
 
 export default defineComponent({
   setup() {
+    const router = useRouter();
+    const { cart, addToCart, cartLength } = useCart();
+    const { t } = useI18n();
     const products = ref<Product[]>([]);
     const categories = ref<Category[]>([]);
     const searchTerm = ref<string>('');
@@ -82,20 +89,6 @@ export default defineComponent({
       });
     });
 
-    const router = useRouter();
-    const { cart, addToCart, cartLength } = useCart();
-    const { t } = useI18n();
-  
-
-
-    const addToCartWithNotification = (product: Product) => {
-      addToCart(product); // Call the original addToCart from useCart
-      showFlashNotification.value = true;
-      setTimeout(() => {
-        showFlashNotification.value = false;
-      }, 1000); // Hide after 1 second
-    };
-
     const proceedToCheckout = () => {
       router.push('/checkout');
     };
@@ -107,16 +100,19 @@ export default defineComponent({
       cartLength,
       searchTerm,
       selectedCategory,
-      addToCart: addToCartWithNotification, // Use the modified function
+      addToCart, // Use the modified function
       proceedToCheckout,
       showFlashNotification,
-      t
+      t,
     };
   },
 });
 </script>
 
 <style>
+.movearea {
+  transition: 0.3s background-color ease;
+}
 .notification {
   position: fixed;
   top: 4rem;

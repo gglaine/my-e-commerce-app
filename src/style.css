@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#app {
-    background: url("/background.jpg") no-repeat;
-    background-repeat: "no-repeat";
-}
+ #app {
+    background: url("/3D_Animation_Style_a_abstract_illustration_of_a_person_flying_0.jpg") no-repeat;
+} 

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 top-24 p-4 flex mt-32 max-w-screen-xl mx-auto">
+  <div class="bg-gray-100 top-24 p-4 flex mt-8 max-w-screen-xl mx-auto">
     <div class="flex-1">
       <div v-for="product in cart" :key="product.id" class="relative p-4 m-4 border rounded shadow-lg bg-white w-96 h-44">
         <h2 class="text-xl mb-2">{{ product.label }}</h2>
@@ -9,18 +9,20 @@
         </div>
       </div>
     </div>
-    <div class="p-4 m-4 border rounded shadow-lg bg-white w-64">
-      <h2 class="text-xl mb-4">Your Cart</h2>
-      <div v-for="product in cart" :key="product.id" class="mb-2">
-        <span>{{ product.label }}:</span>
-        <span>{{ product.price / 100 }} €</span>
-        <button @click="removeFromCart(product)" class="bg-red-500 text-white text-xs p-2 rounded"><font-awesome-icon icon="fa-solid fa-trash" /></button>
-      </div>
-      <div class="font-bold text-lg">
-        Total: {{ total }} €
-      </div>
-      <!-- Add checkout button or other details here -->
+    <div class="p-4 m-4 border rounded shadow-lg bg-white ">
+  <h2 class="text-xl mb-4">{{$t('yourCart')}}</h2> 
+  <div v-for="product in cart" :key="product.id" class="mb-2 flex justify-between items-center">
+    <div>
+      <span>{{ product.label }}:</span>
+      <span>{{ product.price / 100 }} €</span>
     </div>
+    <button @click="removeFromCart(product)" class="bg-red-500 text-white text-xs p-2 rounded"><font-awesome-icon icon="fa-solid fa-trash" /></button>
+  </div>
+  <div class="font-bold text-lg">
+    Total: {{ total }} €
+  </div>
+  <!-- Add checkout button or other details here -->
+</div>
   </div>
 </template>
 
