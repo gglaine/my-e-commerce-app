@@ -1,41 +1,50 @@
 <template>
-  <div class="max-w-screen-xl mx-auto mt-24">
-    <div class="p-4 flex justify-end">
+
+  <div class="max-w-screen-xl mx-auto mt-12 p-2">
+    <div class="p-4 flex justify-end mb-8">
       <input v-model="searchTerm" :placeholder="$t('searchProducts')" class="w-full p-2 mr-2 rounded border" />
       <select v-model="selectedCategory" class="p-2 mr-0 rounded border">
         <option value="">{{$t('allCategories')}}</option>
         <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.label }}</option>
       </select>
     </div>
-    <div class="bg-gray-100 p-4 flex flex-col md:flex-row-reverse">
-      <div class="flex flex-col p-2 m-4 border rounded shadow-lg bg-white w-full md:w-40 flex-none mb-4 md:mb-0">
+
+    <div class="bg-gray-100 p-4 flex flex-col w-24 min-w-full md:flex-row-reverse">
+      
+      <div class="flex flex-col p-8 m-4 border rounded shadow-lg bg-white max-w-lg md:w-1/4 flex-none mb-4 md-w-full md:mb-0">
         <div v-if="showFlashNotification" class="fixed notification top-4 right-4 bg-green-500 text-white p-4 rounded transition duration-300 ease-in-out" :class="{ 'animate-notification': showFlashNotification }">
           {{$t('onTheMove')}}
         </div>
-        <button @click="proceedToCheckout" class="bg-green-500 text-white p-2 rounded mb-4">{{$t('proceedToCheckout')}}</button>
         <h3 class="mb-2"> {{$t('itemsInYourCart')}}</h3>
-        <div v-for="product in cart" :key="product.id" class="mb-2 flex justify-between text-sm">
+        <div v-for="product in cart" :key="product.id" class="mb-3 flex justify-between text-sm">
           <span>{{ product.label }}:</span>
         </div>
+        <button @click="proceedToCheckout" class="bg-green-500 text-white p-2 rounded mb-4">{{$t('proceedToCheckout')}}</button>
       </div>
-      <div class="flex flex-col space-y-2 justify-end items-end">
-        <div v-for="product in filteredProducts" :key="product.id" class="border rounded shadow-lg bg-white w-full md:w-1/2 flex flex-row p-2 m-2 relative text-sm">
-          <div :style="{ backgroundImage: `url(${product.thumbnail_url})`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '16/9' }" class="w-32 h-16 mr-2 bg-cover bg-center"></div>
-          <div class="p-2 flex-grow">
-            <div class="flex justify-between items-start">
-              <div>
-                <h2 class="text-lg mb-2">{{ product.label }}</h2>
-                <p class="mb-2">{{ product.description }}</p>
-              </div>
+
+      <div class="flex flex-col md:flex-col space-y-4 justify-end items-end p-1">
+
+        <div v-for="product in filteredProducts" :key="product.id" class="border rounded shadow-lg bg-white  
+        p-8 m-2 relative text-sm mr-2">
+
+          <div class="mb-2 w-full max-w-screen-2xl relative p-4">
+            <div :style="{ backgroundImage: `url(${product.thumbnail_url})`, backgroundSize: 'cover', backgroundPosition: 'center center', top: '0em', right: '-3em', backgroundRepeat: 'no-repeat', aspectRatio: '16/9', width: '90px', borderRadius: '6px' }" class=" md:absolute md:top-2 md:-right-4 display: inline-block" >
             </div>
+            <h2 class="text-xl mb-1 pl-0 mt-4 md:mt-0 ">{{ product.label }}</h2>
           </div>
-          <p class="mb-3 text-sm absolute top-2 right-2">{{ product.price / 100 }} €</p>
-          <div class="absolute mt-2 bottom-2 right-2">
-            <button @click="addToCart(product)" class="bg-blue-500 hover:bg-blue-700 text-white p-2 mt-2 rounded transition duration-300 ease-in-out text-sm">
+          <div class="flex mb-8 ">
+            <p class="max-w-sm text-lg pr-2 md:pt-3 pt-1">{{ product.description }}</p>
+          </div>
+          <div class="flex justify-end items-end">
+            <h2 class="text-lg mr-8 pt-0 pb-1"><font-awesome-icon icon="fa-solid fa-tag" class="hidden md:visible" />{{ product.price / 100 }} €</h2>
+
+            <button @click="addToCart(product)" class="mt-0 pt-2 bg-blue-500 hover:bg-blue-700 text-white p-2 rounded transition duration-300 ease-in-out text-sm">
               <font-awesome-icon icon="fa-solid fa-cart-arrow-down" class="mr-2" />
             </button>
           </div>
+
         </div>
+
       </div>
     </div>
   </div>

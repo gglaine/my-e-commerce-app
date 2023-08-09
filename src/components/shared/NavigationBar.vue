@@ -1,5 +1,5 @@
 <template>
-  <nav class="relative z-60 p-6 pb-2 pt-2 flex justify-between items-center">
+  <nav class="sticky z-60 p-6 pb-2 pt-2 flex justify-between items-center">
     <router-link to="/">
       <img src="airshop.svg" alt="Logo" class="h-16 w-32 mr-2" />
     </router-link>
