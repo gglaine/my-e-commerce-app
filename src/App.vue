@@ -1,26 +1,30 @@
 <template>
   <div id="app">
-    <NavigationBar />
-    <transition name="fade" mode="out-in">
-    <router-view></router-view>
+    <NavigationBar class="fixed top-0" />
+    <router-view v-slot="{ Component }">
+  <transition name="fade" mode="out-in">
+    <component :is="Component" />
   </transition>
+</router-view>
+    <FooterBar/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import NavigationBar from './components/shared/NavigationBar.vue'; // Adjust the path to match your file structure
+import FooterBar from './components/shared/FooterBar.vue';
 
 export default defineComponent({
   components: {
-    NavigationBar,
+    NavigationBar,FooterBar
   },
 });
 </script>
 
 <style>
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 5.5s;
+  transition: opacity 330ms;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;

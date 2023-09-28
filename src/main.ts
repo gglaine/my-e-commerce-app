@@ -6,9 +6,9 @@ import { messages } from './translations';
 import './style.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faUserSecret, faCartArrowDown, faCartShopping, faTrash, faTag } from '@fortawesome/free-solid-svg-icons';
+import { faUserSecret, faCartArrowDown, faCartShopping, faTrash, faTag, faBox } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faUserSecret, faCartArrowDown, faCartShopping, faTrash, faTag);
+library.add(faUserSecret, faCartArrowDown, faCartShopping, faTrash, faTag, faBox);
 
 const i18n = createI18n({
   locale: 'en', // Set the initial locale to English
