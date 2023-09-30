@@ -45,7 +45,7 @@ export const messages = {
       itemsInYourCart: "Items in your cart",
       addToCart: "Add to Cart",
       yourCart: "Your cart",
-      English: 'EnglIISH',
+      English: 'English',
       about: {
         title: "🚀 Airshop: Your Ultimate Transport Ticketing Companion 🎫",
         welcomeIntro: "Welcome to Airshop",
@@ -133,7 +133,7 @@ export const messages = {
       itemsInYourCart: "Votre panier",
       addToCart: "Ajouter au panier",
       yourCart: "Votre panier",
-      English: "Francais",
+      English: "English",
       about: {
         title: "🚀 Airshop : Votre compagnon ultime pour la billetterie de transport 🎫",
         welcomeIntro: "Bienvenue chez Airshop",
