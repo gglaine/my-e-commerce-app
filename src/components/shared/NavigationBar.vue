@@ -19,7 +19,7 @@
       <button @click="goToCart" class="bg-amber-500 text-white p-2 rounded">
         <font-awesome-icon icon="cart-shopping" class="mr-2" />{{ cartLength }}
       </button>
-      <div v-if="showDropdown" ref="dropdown" class="absolute right-0 mt-4 w-48 rounded-md shadow-lg bg-white-200">
+      <div v-if="showDropdown" ref="dropdown" class="absolute right-24 top-7 mt-8 w-48 rounded-md shadow-lg bg-orange-500 z-3000">
         <div class="py-1">
           <button @click="setLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">🇬🇧 {{ t('English') }}</button>
           <button @click="setLanguage('fr')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">🇫🇷 {{ t('Francais') }}</button>
@@ -131,8 +131,8 @@ export default {
   transform: rotateX('45');
   /* Previously defined custom properties */
   --s: 100px;
-  --c1: #38c43d87;
-  --c2: rgba(255, 188, 31, 0.8); /* Changed to blue */
+  --c1: #cbcbcb87;
+  --c2: rgba(255, 165, 31, 0.8); /* Changed to blue */
   --_s: calc(2*var(--s)) calc(2*var(--s));
   --_g: var(--_s) conic-gradient(at 40% 40%,#0000 5%,var(--c1) 0);
   --_p: var(--_s) conic-gradient(at 20% 20%,#0000 85%,var(--c2) 0);
