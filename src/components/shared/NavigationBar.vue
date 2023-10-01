@@ -2,7 +2,7 @@
   <nav class="sticky top-0 mb-12 z-1000 pl-8 pr-8 pb-2 bg-orange-500 pt-2 flex justify-between items-center border-b border-orange-500">
     <!-- Logo -->
     <router-link to="/">
-      <img src="/AIRSHOP-LOGO.svg" alt="Logo" class="h-16 w-32 mr-2" />
+      <img src="/HAPPYCART.svg" alt="Logo" class="h-16 w-32 mr-2" />
     </router-link>
     <!-- Desktop View Links -->
     <div class="hidden md:flex space-x-4">
