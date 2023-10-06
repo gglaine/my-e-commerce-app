@@ -69,8 +69,6 @@ import { defineComponent, ref, computed } from 'vue';
 import { useCart } from './composables/useCart';
 import { useRouter } from 'vue-router';
 import { Product, Category } from './types';
-import BackgroundAnimation from './shared/BackgroundAnimation.vue'; // Adjust the path accordingly
-
 
 export default defineComponent({
   
