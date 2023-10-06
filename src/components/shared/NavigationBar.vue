@@ -1,8 +1,12 @@
 <template>
-  <nav class="sticky top-0 mb-12 z-1000 pl-8 pr-8 pb-2 bg-orange-500 pt-2 flex justify-between items-center border-b border-orange-500">
+  <nav class="sticky topnav top-0 mb-12 pl-8 pr-8 pb-2 bg-orange-500 pt-2 flex justify-between items-center border-b border-orange-500">
     <!-- Logo -->
     <router-link to="/">
-      <img src="/HAPPYCART.svg" alt="Logo" class="h-16 w-32 mr-2" />
+      <div class="flex items-center">
+        <img src="/BEARSHOP-BAG.svg" alt="Logo" class="h-[90px] mw-32 mr-0" />
+      <div class="text-white font-light text-xl pl-0">BARESHOP</div>
+      </div>
+ 
     </router-link>
     <!-- Desktop View Links -->
     <div class="hidden md:flex space-x-4">
@@ -19,10 +23,10 @@
       <button @click="goToCart" class="bg-amber-500 text-white p-2 rounded">
         <font-awesome-icon icon="cart-shopping" class="mr-2" />{{ cartLength }}
       </button>
-      <div v-if="showDropdown" ref="dropdown" class="absolute right-24 top-7 mt-8 w-48 rounded-md shadow-lg bg-orange-500 z-3000">
+      <div v-if="showDropdown" ref="dropdown" class="absolute right-24 top-12 mt-8 w-48 rounded-md shadow-lg bg-gray-100 z-3000">
         <div class="py-1">
-          <button @click="setLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">🇬🇧 {{ t('English') }}</button>
-          <button @click="setLanguage('fr')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">🇫🇷 {{ t('Francais') }}</button>
+          <button @click="setLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 w-full text-left">🇬🇧 {{ t('English') }}</button>
+          <button @click="setLanguage('fr')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 w-full text-left">🇫🇷 {{ t('Francais') }}</button>
         </div>
       </div>
     </div>
@@ -46,6 +50,8 @@ import { ref, computed, watch, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { useCart } from '../composables/useCart';
+// Adjust the path accordingly
+
 
 export default {
   name: 'Navbar',
@@ -122,30 +128,13 @@ export default {
 </script>
 
 <style>
-
+.topnav {
+  z-index: 1000;
+}
 .topstack {
   z-index: 2000 !important;
 }
-.navbar-animated {  
-  z-index: 1000 !important;
-  transform: rotateX('45');
-  /* Previously defined custom properties */
-  --s: 100px;
-  --c1: #cbcbcb87;
-  --c2: rgba(255, 165, 31, 0.8); /* Changed to blue */
-  --_s: calc(2*var(--s)) calc(2*var(--s));
-  --_g: var(--_s) conic-gradient(at 40% 40%,#0000 5%,var(--c1) 0);
-  --_p: var(--_s) conic-gradient(at 20% 20%,#0000 85%,var(--c2) 0);
-  /* Background properties */
-  background:
-    calc( .9*var(--s)) calc( .9*var(--s))/var(--_p),
-    calc(-.1*var(--s)) calc(-.1*var(--s))/var(--_p),
-    calc( .7*var(--s)) calc( .7*var(--s))/var(--_g),
-    calc(-.3*var(--s)) calc(-.3*var(--s))/var(--_g),
-    conic-gradient(from 90deg at 20% 20%,var(--c2) 5%,var(--c1) 0) 0 0/var(--s) var(--s);
-  /* Animation */
-  animation: m 13s infinite;
-}
+
 .text{
   font-family:'Roboto', sans-serif;
   text-align:center;

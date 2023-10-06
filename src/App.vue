@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="flex flex-col min-h-screen">
-    <NavigationBar class="fixed top-0 z-10 w-full" />
+    <NavigationBar class="fixed top-0  w-full" />
     
     <div class="flex-grow pt-4 md:pt-16 pb-16 overflow-auto"> <!-- adjust padding as needed -->
       <router-view v-slot="{ Component }">
@@ -10,7 +10,7 @@
       </router-view>
     </div>
     
-    <FooterBar class="z-10 w-full"/>
+    <FooterBar class="w-full"/>
   </div>
 </template>
 

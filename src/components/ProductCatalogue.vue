@@ -1,30 +1,29 @@
 <template>
   <div class="max-w-screen-xl mx-auto relative z-1000">
     <!-- Sticky container for navbar and product list -->
-    <div class="sticky top-48 z-50 overflow-hidden">
+    <div class="overflow-hidden">
       <!-- Navbar section -->
-      <div class="p-2 md:p-6 flex flex-col h-32 md:h-28 md:flex-row justify-between mb-2 z-0 navbar-animated  rounded">
-<!-- Categories Selection -->
-<div class="flex flex-row justify-end mt-2 mb-4 space-x-2 pr-4 text-orange font-bold font-Inter">
-  <button @click="selectedCategory = ''" class="p-1 md:p-2 text-sm md:text-base rounded hover:bg-orange-500" :class="{ 'bg-emerald-500': selectedCategory === '' }">
-    {{$t('allCategories')}}
-  </button>
-  <button 
-    v-for="category in categories" 
-    :key="category.id" 
-    @click="selectedCategory = category.id" 
-    class="p-1 md:p-2 text-sm md:text-base border rounded hover:bg-orange-400" 
-    :class="{ 'bg-gray-300': selectedCategory === category.id }">
-        {{ $t(`categories.${category.id}`) }}
-  </button>
-</div>
-
+      <div class="p-2 md:p-6 flex flex-col h-32 md:h-28 md:flex-row justify-between mb-2 z-0  rounded">
+        <!-- Categories Selection -->
+        <div class="flex flex-row justify-end mt-2 mb-4 space-x-2 pr-4 text-orange font-bold font-Inter">
+          <button @click="selectedCategory = ''" class="p-1 md:p-2 text-sm md:text-base rounded hover:bg-orange-500" :class="{ 'bg-emerald-500': selectedCategory === '' }">
+            {{$t('allCategories')}}
+          </button>
+          <button 
+            v-for="category in categories" 
+            :key="category.id" 
+            @click="selectedCategory = category.id" 
+            class="p-1 md:p-2 text-sm md:text-base border rounded hover:bg-orange-400" 
+            :class="{ 'bg-gray-300': selectedCategory === category.id }">
+                {{ $t(`categories.${category.id}`) }}
+          </button>
+        </div>
         <!-- Search Input -->
-<input v-model="searchTerm" :placeholder="$t('searchProducts')" class="w-full pl-4 py-3 md:py-2 rounded border h-auto md:max-h-12" />
-
+        <input v-model="searchTerm" :placeholder="$t('searchProducts')" class="w-full pl-4 py-3 md:py-2 rounded border h-auto md:max-h-12" />
       </div>
       <!-- Products list section with overflow handling -->
-      <div class="bg-gray-100 border rounded mt-8 pt-8 p-8 pb-12 flex flex-col md:flex-row-reverse overflow-y-auto max-h-[calc(100vh-200px)]">
+      <div class="navbar-animated rounded mt-8 pt-8 p-8 pb-12 flex flex-col md:flex-row-reverse overflow-y-auto max-h-[calc(100vh-200px)]">
+        <BackgroundAnimation :targetSelector="'.navbar-animated'" />
         <div class="flex z-0 flex-col md:flex-row md:flex-wrap space-y-2 justify-end items-end p-2">
           <div v-for="product in filteredProducts" :key="product.id" class="border rounded shadow-md hover:shadow-lg bg-white p-8 m-2 text-sm mr-2 md:w-1/3 transform transition hover:scale-102 hover:bg-slate-50">
             <!-- Product Thumbnail -->
@@ -45,10 +44,10 @@
                 :class="{'cart-button': true, 'clicked': buttonAnimation.has(product.id)}" 
                 @click="addToCart(product)"
                 class="bg-orange-400">
-                <span class="add-to-cart"><font-awesome-icon icon="fa-brands fa-opencart"  class="cart-icon text-xl"  /></span>
+                <span class="add-to-cart"><font-awesome-icon icon="fa-solid fa-cart-arrow-down"  class="cart-icon text-base"  /></span>
                 <span class="added">Added</span>
                 <!-- <font-awesome-icon icon="fa-solid fa-cart-arrow-down" class="cart-icon text-xl" /> -->
-                <font-awesome-icon icon="fa-brands fa-opencart"  class="cart-icon text-xl"  />
+                <font-awesome-icon icon="fa-solid fa-cart-shopping"  class="cart-icon text-xl"  />
                     <font-awesome-icon 
                         v-if="buttonAnimation.has(product.id)" 
                         icon="fa-solid fa-box" 
@@ -70,6 +69,8 @@ import { defineComponent, ref, computed } from 'vue';
 import { useCart } from './composables/useCart';
 import { useRouter } from 'vue-router';
 import { Product, Category } from './types';
+import BackgroundAnimation from './shared/BackgroundAnimation.vue'; // Adjust the path accordingly
+
 
 export default defineComponent({
   
@@ -150,7 +151,7 @@ export default defineComponent({
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.2em;
+  font-size: 0.9em;
   color: #fff;
 }
 
@@ -171,7 +172,7 @@ export default defineComponent({
 }
 
 .cart-button .cart-icon {
-  left: -10%;
+  left: -25%;
   font-size: 2em;
 }
 
