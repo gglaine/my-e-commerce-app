@@ -23,7 +23,6 @@
       </div>
       <!-- Products list section with overflow handling -->
       <div class="navbar-animated rounded mt-8 pt-8 p-8 pb-12 flex flex-col md:flex-row-reverse overflow-y-auto max-h-[calc(100vh-200px)]">
-        <BackgroundAnimation :targetSelector="'.navbar-animated'" />
         <div class="flex z-0 flex-col md:flex-row md:flex-wrap space-y-2 justify-end items-end p-2">
           <div v-for="product in filteredProducts" :key="product.id" class="border rounded shadow-md hover:shadow-lg bg-white p-8 m-2 text-sm mr-2 md:w-1/3 transform transition hover:scale-102 hover:bg-slate-50">
             <!-- Product Thumbnail -->
@@ -46,7 +45,7 @@
                 class="bg-orange-400">
                 <span class="add-to-cart"><font-awesome-icon icon="fa-solid fa-cart-arrow-down"  class="cart-icon text-base"  /></span>
                 <span class="added">Added</span>
-                <!-- <font-awesome-icon icon="fa-solid fa-cart-arrow-down" class="cart-icon text-xl" /> -->
+
                 <font-awesome-icon icon="fa-solid fa-cart-shopping"  class="cart-icon text-xl"  />
                     <font-awesome-icon 
                         v-if="buttonAnimation.has(product.id)" 

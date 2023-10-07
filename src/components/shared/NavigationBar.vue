@@ -1,10 +1,9 @@
 <template>
-  <nav class="sticky topnav top-0 mb-12 pl-8 pr-8 pb-2 bg-orange-500 pt-2 flex justify-between items-center border-b border-orange-500">
+  <nav class="sticky topnav top-0 mb-12 pl-8 pr-8 pb-4 pt-4 bg-orange-500 flex justify-between items-center border-b border-orange-500">
     <!-- Logo -->
     <router-link to="/">
       <div class="flex items-center">
-        <img src="/BEARSHOP-BAG.svg" alt="Logo" class="h-[90px] mw-32 mr-0" />
-      <div class="text-white font-light text-xl pl-0">BARESHOP</div>
+        <div class="text-white text-xl font-bold">CITYPASS</div>
       </div>
  
     </router-link>
