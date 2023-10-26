@@ -3,7 +3,7 @@
     <!-- Logo -->
     <router-link to="/">
       <div class="flex items-center">
-        <div class="text-white text-xl font-bold flex"><img src="./LOGO.svg" class="mr-2"/>AIRshop</div>
+        <div class="text-white text-xl font-bold flex"><img src="/LOGO.svg" class="mr-2"/>AIRshop</div>
       </div>
  
     </router-link>
