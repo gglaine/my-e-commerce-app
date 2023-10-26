@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-orange-500 min-h-52 w-full p-6 pb-36 mt-24 navbar-animated">
+    <div class="bg-emerald-600  min-h-52 w-full p-6 pb-36 mt-24 navbar-animated">
         <!-- <img src="/BEARSHOP-BAG.svg" alt="Logo" class="h-16 w-32 mr-2 mb-4" /> -->
         <div class="flex items-center">
         <div class="text-white text-xl font-bold mt-6 mb-4 flex"><img src="/LOGO.svg" class="mr-2"/></div>

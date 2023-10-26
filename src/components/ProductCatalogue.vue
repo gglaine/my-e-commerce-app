@@ -5,15 +5,15 @@
       <!-- Navbar section -->
       <div class="p-2 md:p-6 flex flex-col h-32 md:h-28 md:flex-row justify-between mb-2 z-0  rounded">
         <!-- Categories Selection -->
-        <div class="flex flex-row justify-end mt-2 mb-4 space-x-2 pr-4 text-orange font-bold font-Inter">
-          <button @click="selectedCategory = ''" class="p-1 md:p-2 text-sm md:text-base rounded hover:bg-orange-500" :class="{ 'bg-emerald-500': selectedCategory === '' }">
+        <div class="flex flex-row justify-end mt-2 mb-4 space-x-2 pr-4 text-orange font-medium font-Inter">
+          <button @click="selectedCategory = ''" class="p-1 md:p-2 text-sm md:text-base rounded hover:bg-emerald-700" :class="{ 'bg-emerald-600 text-white': selectedCategory === '' }">
             {{$t('allCategories')}}
           </button>
           <button 
             v-for="category in categories" 
             :key="category.id" 
             @click="selectedCategory = category.id" 
-            class="p-1 md:p-2 text-sm md:text-base border rounded hover:bg-orange-400" 
+            class="p-1 md:p-2 text-sm md:text-base border rounded hover:bg-emerald-600 hover:text-white" 
             :class="{ 'bg-gray-300': selectedCategory === category.id }">
                 {{ $t(`categories.${category.id}`) }}
           </button>
@@ -42,11 +42,11 @@
               <button 
                 :class="{'cart-button': true, 'clicked': buttonAnimation.has(product.id)}" 
                 @click="addToCart(product)"
-                class="bg-orange-400">
+                class="bg-emerald-600 ">
                 <span class="add-to-cart"><font-awesome-icon icon="fa-solid fa-cart-arrow-down"  class="cart-icon text-base"  /></span>
                 <span class="added">Added</span>
 
-                <font-awesome-icon icon="fa-solid fa-cart-shopping"  class="cart-icon text-xl"  />
+                <font-awesome-icon icon="fa-solid fa-cart-shopping"  class="cart-icon text-2xl"  />
                     <font-awesome-icon 
                         v-if="buttonAnimation.has(product.id)" 
                         icon="fa-solid fa-box" 
@@ -128,116 +128,6 @@ export default defineComponent({
 </script>
 
 <style>
-.orgbck {
-  background-image: url("./DD1.jpg") ;
-}
-.area{
-    background: #4e54c8;  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-    width: 100%;
-    height:100vh;
-    
-   
-}
-
-.circles{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.circles li{
-    position: absolute;
-    display: block;
-    list-style: none;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    animation: animate 25s linear infinite;
-    bottom: -150px;
-    
-}
-
-.circles li:nth-child(1){
-    left: 25%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
-}
-
-
-.circles li:nth-child(2){
-    left: 10%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 2s;
-    animation-duration: 12s;
-}
-
-.circles li:nth-child(3){
-    left: 70%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 4s;
-}
-
-.circles li:nth-child(4){
-    left: 40%;
-    width: 60px;
-    height: 60px;
-    animation-delay: 0s;
-    animation-duration: 18s;
-}
-
-.circles li:nth-child(5){
-    left: 65%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 0s;
-}
-
-.circles li:nth-child(6){
-    left: 75%;
-    width: 110px;
-    height: 110px;
-    animation-delay: 3s;
-}
-
-.circles li:nth-child(7){
-    left: 35%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 7s;
-}
-
-.circles li:nth-child(8){
-    left: 50%;
-    width: 25px;
-    height: 25px;
-    animation-delay: 15s;
-    animation-duration: 45s;
-}
-
-.circles li:nth-child(9){
-    left: 20%;
-    width: 15px;
-    height: 15px;
-    animation-delay: 2s;
-    animation-duration: 35s;
-}
-
-.circles li:nth-child(10){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-
-
 
 @keyframes animate {
 
@@ -257,9 +147,9 @@ export default defineComponent({
 
 .cart-button {
   position: relative;
-  padding: 2em;
-  width: 120px;
-  height: 40px;
+  padding: 1.4em;
+  width: 100px;
+  height: 20px;
   border: 0;
   outline: none;
   border-radius: 10px;

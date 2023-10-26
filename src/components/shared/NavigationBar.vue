@@ -1,5 +1,5 @@
 <template>
-  <nav class="sticky topnav top-0 mb-12 pl-8 pr-8 pb-4 pt-4 bg-orange-500 flex justify-between items-center border">
+  <nav class="sticky topnav top-0 mb-12 pl-8 pr-8 pb-4 pt-4 bg-emerald-600 flex justify-between items-center border">
     <!-- Logo -->
     <router-link to="/">
       <div class="flex items-center">
@@ -19,13 +19,13 @@
       <button @click="toggleDropdown" class="bg-gray-200 mr-2 text-black p-2 rounded">
         {{ currentFlag }} ▼
       </button>
-      <button @click="goToCart" class="bg-amber-500 text-white p-2 rounded">
+      <button @click="goToCart" class="bg-white text-emerald-600 p-2 rounded">
         <font-awesome-icon icon="cart-shopping" class="mr-2" />{{ cartLength }}
       </button>
-      <div v-if="showDropdown" ref="dropdown" class="absolute right-24 top-12 mt-8 w-48 rounded-md shadow-lg bg-gray-100 z-3000">
+      <div v-if="showDropdown" ref="dropdown" class="absolute right-24 top-12 mt-8 w-48 rounded-md shadow-lg bg-white z-3000">
         <div class="py-1">
-          <button @click="setLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 w-full text-left">🇬🇧 {{ t('English') }}</button>
-          <button @click="setLanguage('fr')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 w-full text-left">🇫🇷 {{ t('Francais') }}</button>
+          <button @click="setLanguage('en')" class="block px-4 py-2 text-sm text-white hover:bg-orange-400 w-full text-left">🇬🇧 {{ t('English') }}</button>
+          <button @click="setLanguage('fr')" class="block px-4 py-2 text-sm text-white hover:bg-orange-400 w-full text-left">🇫🇷 {{ t('Francais') }}</button>
         </div>
       </div>
     </div>
