@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="flex flex-col min-h-screen">
     <NavigationBar class="fixed top-0  w-full" />
-    
     <div class="flex-grow pt-4 md:pt-16 pb-16 overflow-auto"> <!-- adjust padding as needed -->
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -9,11 +8,9 @@
         </transition>
       </router-view>
     </div>
-    
     <FooterBar class="w-full"/>
   </div>
 </template>
-
 
 <script lang="ts">
 import { defineComponent } from 'vue';

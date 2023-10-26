@@ -1,9 +1,9 @@
 <template>
-  <nav class="sticky topnav top-0 mb-12 pl-8 pr-8 pb-4 pt-4 bg-orange-500 flex justify-between items-center border-b border-orange-500">
+  <nav class="sticky topnav top-0 mb-12 pl-8 pr-8 pb-4 pt-4 bg-orange-500 flex justify-between items-center border">
     <!-- Logo -->
     <router-link to="/">
       <div class="flex items-center">
-        <div class="text-white text-xl font-bold">CITYPASS</div>
+        <div class="text-white text-xl font-bold flex"><img src="./LOGO.svg" class="mr-2"/>AIRshop</div>
       </div>
  
     </router-link>
@@ -36,9 +36,9 @@
         <div class="font-bold text-white text-4xl">☰</div>
       </button>
       <div v-if="showMobileMenu" class="absolute top-full left-0 w-full bg-orange-400 mt-0 pt-12 pb-8 text-right pr-4 rounded topstack">
-        <router-link to="/contact" class="block py-2 px-4 text-white font-bold hover:bg-orange-600">Contact</router-link>
-        <router-link to="/about" class="block py-2 px-4 text-white font-bold hover:bg-orange-600">About</router-link>
-        <router-link to="/services" class="block py-2 px-4 text-white font-bold hover:bg-orange-600">Services</router-link>
+        <router-link to="/contact" class="block py-2 px-4 text-white font-bold hover:text-undeline">Contact</router-link>
+        <router-link to="/about" class="block py-2 px-4 text-white font-bold hover:text-undeline">About</router-link>
+        <router-link to="/services" class="block py-2 px-4 text-white font-bold hover:text-undeline">Services</router-link>
       </div>
     </div>
   </nav>
